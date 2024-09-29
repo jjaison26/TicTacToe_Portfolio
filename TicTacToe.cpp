@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <cctype>
 using namespace std;
 
 void printLine() {
@@ -115,6 +116,8 @@ int main() {
         char mark1;
         char mark2;
         int turns = 0;
+	string c1;
+	string c2;
         int choice1 = 0;
         int choice2 = 0;
         string P1 = "Player 1";
@@ -126,7 +129,10 @@ int main() {
         do{
                 do{
                 cout << P1 << ", choose a valid position between 1 and 9." << endl;
-                cin >> choice1;
+                cin >> c1;
+		if(c1.length() == 1 && isdigit(c1[0])) {
+			choice1 = stoi(c1);
+		}
                 }while(choice1 <=0 || choice1 >=10 || Positions[choice1 -1] == mark1 || Positions[choice1 -1] == mark2);
                 Positions[choice1 - 1] = mark1;
                 printGrid(Positions);
@@ -143,7 +149,10 @@ int main() {
 
                 do{
                 cout << P2 << ", choose a valid position between 1 and 9." << endl;
-                cin >> choice2;
+                cin >> c2;
+		if(c2.length() == 1 && isdigit(c2[0])) {
+			choice2 = stoi(c2);
+		}
                 }while(choice2 <=0 || choice2 >=10 || Positions[choice2 -1] == mark1 || Positions[choice1 -1] == mark2);
 
                 Positions[choice2 - 1] = mark2;
