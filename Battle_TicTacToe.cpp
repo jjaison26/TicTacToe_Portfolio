@@ -168,16 +168,296 @@ void swap(char Positions[], char mark1, char mark2) {
 
 }
 
+void move_adj(char Positions[], char mark1, char mark2) {
+        string c1, c2;
+        int pos1, pos2;
+        do{
+        cout << "Enter the position of the mark you want to move" << endl;
+        getline(cin, c1);
+        if(!isdigit(c1[0]) || c1.length() > 1){
+                cout << "That is not a valid input!"<<endl;
+        }
+        else if(isdigit(c1[0]) && c1.length() == 1) {
+                pos1 = stoi(c1);
+                if(pos1 <=0 || pos1 >=10) {
+                        cout << "That value is not in range!" << endl;
+                }
+                else if(Positions[pos1-1] == mark2) {
+                        cout << "You cannot move your opponent's mark!" << endl;
+                }
+                else if(Positions[pos1-1] != mark1) {
+                        cout << "You cannot move this mark!" << endl;
+                }
+        }
+        }while(!isdigit(c1[0]) || c1.length() > 1 || pos1 <=0 || pos1 >=10 || Positions[pos1-1] != mark1 || Positions[pos1-1] == mark2);
+        switch(pos1) {
+                case 1:
+                        if(!isdigit(Positions[1]) && !isdigit(Positions[3]) && !isdigit(Positions[4])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 2 && pos2 != 4 && pos2 != 5) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 2 && pos2 != 4 && pos2 != 5) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[0] = '1';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 2:
+                        if(!isdigit(Positions[0]) && !isdigit(Positions[2]) && !isdigit(Positions[4]) && !isdigit(Positions[3])&& !isdigit(Positions[5])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 1 &&  pos2 != 3 &&  pos2 != 5 && pos2 != 4 && pos2 != 6 ) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 1 && pos2 != 3 && pos2 != 4 && pos2 != 5 && pos2 != 6) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[1] = '2';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 3:
+                        if(!isdigit(Positions[1]) && !isdigit(Positions[4]) && !isdigit(Positions[5])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 2 && pos2 != 5 && pos2 != 6) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 2 && pos2 != 5 && pos2 != 6) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[2] = '3';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 4:
+                        if(!isdigit(Positions[0]) && !isdigit(Positions[1]) && !isdigit(Positions[4]) && !isdigit(Positions[6])&& !isdigit(Positions[7])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 1 &&  pos2 != 2 &&  pos2 != 5 && pos2 != 7 && pos2 != 8 ) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 1 && pos2 != 2 && pos2 != 5 && pos2 != 7 && pos2 != 8) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[3] = '4';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 5:
+                        if(!isdigit(Positions[0]) && !isdigit(Positions[1]) && !isdigit(Positions[2]) && !isdigit(Positions[3])&& !isdigit(Positions[5]) && !isdigit(Positions[6]) && !isdigit(Positions[7]) && !isdigit(Positions[8])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 == 5) {
+                                        cout << "Invalid move! You have to move to another position." << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || pos2 == 5 || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[4] = '5';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 6:
+                        if(!isdigit(Positions[1]) && !isdigit(Positions[2]) && !isdigit(Positions[4]) && !isdigit(Positions[7])&& !isdigit(Positions[8])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 2 &&  pos2 != 3 &&  pos2 != 5 && pos2 != 8 && pos2 != 9 ) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 2 && pos2 != 3 && pos2 != 5 && pos2 != 8 && pos2 != 9) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[5] = '6';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+
+                case 7:
+                        if(!isdigit(Positions[3]) && !isdigit(Positions[4]) && !isdigit(Positions[7])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 5 && pos2 != 4 && pos2 != 8 ) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 4 && pos2 != 5 && pos2 != 8) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[6] = '7';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 8:
+                        if(!isdigit(Positions[3]) && !isdigit(Positions[4]) && !isdigit(Positions[5]) && !isdigit(Positions[6])&& !isdigit(Positions[8])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 4 &&  pos2 != 5 &&  pos2 != 6 && pos2 != 7 && pos2 != 9 ) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 4 && pos2 != 5 && pos2 != 6 && pos2 != 7 && pos2 != 9) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[7] = '8';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+                case 9:
+                        if(!isdigit(Positions[4]) && !isdigit(Positions[5]) && !isdigit(Positions[7])) {
+                                cout << "You cannot move this mark!" << endl;
+                        }
+                        else {
+                        do {
+                        cout << "Enter the position you want to move to:" << endl;
+                        getline(cin, c2);
+                        if(!isdigit(c2[0]) || c2.length() > 1) {
+                                cout << "That is not a valid input!" << endl;
+                        }
+                        else if(isdigit(c2[0]) && c2.length() == 1) {
+                                pos2 = stoi(c2);
+                                if(pos2 <= 0 || pos2 >= 10) {
+                                        cout << "That value is not in range!" << endl;
+                                }
+                                else if(pos2 != 5 && pos2 != 8 && pos2 != 6 ) {
+                                        cout << "Invalid move!" << endl;
+                                }
+                                else if(Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2) {
+                                        cout << "You cannot overwrite another mark!" << endl;
+                                }
+                        }
+                        }while(!isdigit(c2[0]) || c2.length() > 1 || pos2 <=0 || pos2 >=10 || (pos2 != 8 && pos2 != 5 && pos2 != 6) || Positions[pos2-1] == mark1 || Positions[pos2-1] == mark2);
+                        Positions[8] = '9';
+                        Positions[pos2-1] = mark1;
+                        }
+                        break;
+
+
+        }
+}
+
 void Paladin(char Positions[], string P, char mark1, char mark2 ) {
         cout << P << " activated the Paladin ability!" << endl;
-
+        move_adj(Positions, mark1, mark2);
 }
 
 void Alchemist(char Positions[], string P, char mark1, char mark2) {
         cout << P << " activated the Alchemist ability!" << endl;
         swap(Positions, mark1, mark2);
 }
-
 
 void BattleTTT(string P1, string P2, char mark1, char mark2, char Positions[], string c1, string c2, int choice1, int choice2, int turns) {
         int P1power_used = 0;
@@ -252,7 +532,6 @@ void BattleTTT(string P1, string P2, char mark1, char mark2, char Positions[], s
                         cout << "The game is a tie!" << endl;
                         break;
                 }
-
                 do{
                 if(P2power_used == 1) {
                 cout << P2 << ", choose a valid position between 1 and 9." << endl;
@@ -303,21 +582,27 @@ void BattleTTT(string P1, string P2, char mark1, char mark2, char Positions[], s
                 }
         }while(!Winner(Positions, mark1, mark2, P1, P2));
 
+
+
+
+
 }
 
 int main() {
-        char Positions[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
         char mark1;
         char mark2;
-        int turns = 0;
         string c1;
         string c2;
         string gOption;
+        string playAgain;
         int choice1;
         int choice2;
         int option;
         string P1 = "Player 1";
         string P2 = "Player 2";
+        do{
+        char Positions[9] = {'1','2','3','4','5','6','7','8','9'};
+	int turns = 0;
         do{
         cout << "Welcome to TicTacToe! Please select a gamemode: \n (1) Regular TicTacToe \n (2) Battle TicTacToe" << endl;
         getline(cin, gOption);
@@ -333,6 +618,10 @@ int main() {
         else if (option == 2) {
                 BattleTTT(P1, P2, mark1, mark2, Positions, c1, c2, choice1, choice2, turns);
         }
+        cout << "Would you like to play again? (Y or N)" << endl;
+        getline(cin, playAgain);
+        }while(playAgain == "Yes" || playAgain == "yes" || playAgain == "Y" || playAgain == "y");
 
         return 0;
 }
+
