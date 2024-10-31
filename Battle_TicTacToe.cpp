@@ -171,6 +171,7 @@ void swap(char Positions[], char mark1, char mark2) {
 void move_adj(char Positions[], char mark1, char mark2) {
         string c1, c2;
         int pos1, pos2;
+        label:
         do{
         cout << "Enter the position of the mark you want to move" << endl;
         getline(cin, c1);
@@ -194,6 +195,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 1:
                         if(!isdigit(Positions[1]) && !isdigit(Positions[3]) && !isdigit(Positions[4])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -222,6 +224,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 2:
                         if(!isdigit(Positions[0]) && !isdigit(Positions[2]) && !isdigit(Positions[4]) && !isdigit(Positions[3])&& !isdigit(Positions[5])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -250,6 +253,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 3:
                         if(!isdigit(Positions[1]) && !isdigit(Positions[4]) && !isdigit(Positions[5])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -278,6 +282,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 4:
                         if(!isdigit(Positions[0]) && !isdigit(Positions[1]) && !isdigit(Positions[4]) && !isdigit(Positions[6])&& !isdigit(Positions[7])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -306,6 +311,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 5:
                         if(!isdigit(Positions[0]) && !isdigit(Positions[1]) && !isdigit(Positions[2]) && !isdigit(Positions[3])&& !isdigit(Positions[5]) && !isdigit(Positions[6]) && !isdigit(Positions[7]) && !isdigit(Positions[8])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -334,6 +340,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 6:
                         if(!isdigit(Positions[1]) && !isdigit(Positions[2]) && !isdigit(Positions[4]) && !isdigit(Positions[7])&& !isdigit(Positions[8])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -363,6 +370,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 7:
                         if(!isdigit(Positions[3]) && !isdigit(Positions[4]) && !isdigit(Positions[7])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -391,6 +399,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 8:
                         if(!isdigit(Positions[3]) && !isdigit(Positions[4]) && !isdigit(Positions[5]) && !isdigit(Positions[6])&& !isdigit(Positions[8])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
@@ -419,6 +428,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
                 case 9:
                         if(!isdigit(Positions[4]) && !isdigit(Positions[5]) && !isdigit(Positions[7])) {
                                 cout << "You cannot move this mark!" << endl;
+                                goto label;
                         }
                         else {
                         do {
