@@ -1,7 +1,13 @@
 #include <iostream>
 #include <array>
 #include <cctype>
+#include <fstream>
 using namespace std;
+
+int totalCount = 0;
+int player1Won = 0;
+int player2Won = 0;
+int tie = 0;
 
 void printLine() {
         cout << "---+---+---" << endl;
@@ -43,12 +49,15 @@ void ChooseMarks(char &mark1, char &mark2) {
 
 bool P1Wins(string P1) {
         cout << P1 << " has won!" << endl;
+        player1Won++;
         return true;
 }
 bool P2Wins(string P2) {
         cout << P2 <<" has won!" << endl;
+        player2Won++;
         return true;
 }
+
 bool Winner(char Positions[], char mark1, char mark2, string P1, string P2) {
         for(int i = 0; i < 3; i++) {
                 if(Positions[i*3] == mark1 && Positions[i*3 +1] == mark1 && Positions[i*3 +2] == mark1){
@@ -80,7 +89,6 @@ bool Winner(char Positions[], char mark1, char mark2, string P1, string P2) {
         }
         return false;
 }
-
 void ChooseNames(string &P1, string &P2) {
         cout << "Enter Player 1's name: ";
         cin >> P1;
@@ -92,8 +100,8 @@ void GameStart(string &P1, string &P2, char &mark1, char &mark2, char Positions[
         ChooseMarks(mark1, mark2);
         printGrid(Positions);
 }
-
 void RegularTTT(string P1, string P2, char mark1, char mark2, char Positions[], string c1, string c2, int choice1, int choice2, int turns) {
+        cin.ignore();
         do{
                 do{
                 cout << P1 << ", choose a valid position between 1 and 9." << endl;
@@ -459,6 +467,7 @@ void move_adj(char Positions[], char mark1, char mark2) {
         }
 }
 
+
 void Paladin(char Positions[], string P, char mark1, char mark2 ) {
         cout << P << " activated the Paladin ability!" << endl;
         move_adj(Positions, mark1, mark2);
@@ -474,6 +483,7 @@ void BattleTTT(string P1, string P2, char mark1, char mark2, char Positions[], s
         int P2power_used = 0;
         int P1power, P2power;
         string p1input, p2input;
+        cin.ignore();
         do {
         cout << P1 << ", please select a power:\n (1) Paladin\n (2) Alchemist" << endl;
         getline(cin, p1input);
@@ -591,13 +601,7 @@ void BattleTTT(string P1, string P2, char mark1, char mark2, char Positions[], s
                         break;
                 }
         }while(!Winner(Positions, mark1, mark2, P1, P2));
-
-
-
-
-
 }
-
 int main() {
         char mark1;
         char mark2;
@@ -612,7 +616,7 @@ int main() {
         string P2 = "Player 2";
         do{
         char Positions[9] = {'1','2','3','4','5','6','7','8','9'};
-	int turns = 0;
+        int turns = 0;
         do{
         cout << "Welcome to TicTacToe! Please select a gamemode: \n (1) Regular TicTacToe \n (2) Battle TicTacToe" << endl;
         getline(cin, gOption);
@@ -621,7 +625,7 @@ int main() {
         }
         }while(!isdigit(gOption[0]) ||  gOption.length() > 1 || (option != 1 && option != 2));
         GameStart(P1, P2, mark1, mark2, Positions);
-
+        totalCount++;
         if(option == 1) {
                 RegularTTT(P1, P2, mark1, mark2, Positions, c1, c2, choice1, choice2, turns);
         }
@@ -631,7 +635,13 @@ int main() {
         cout << "Would you like to play again? (Y or N)" << endl;
         getline(cin, playAgain);
         }while(playAgain == "Yes" || playAgain == "yes" || playAgain == "Y" || playAgain == "y");
-
+        tie = totalCount - (player1Won + player2Won);
+        string fileName = "tttresult.csv";
+        ofstream csvfile("tttresult.csv");
+        csvfile << "Total Games Played,Player 1 Wins,Player 2 Wins, Ties"<< endl;
+        csvfile << totalCount << ","<< player1Won<<","<< player2Won<<","<<tie<<endl;
+        csvfile.close();
+        cout << "Succesfully saved to disk as 'tttresult.csv'!" << endl;
         return 0;
 }
 
