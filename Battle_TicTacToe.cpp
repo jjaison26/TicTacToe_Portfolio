@@ -487,19 +487,20 @@ void BattleTTT(string P1, string P2, char mark1, char mark2, char Positions[], s
         do {
         cout << P1 << ", please select a power:\n (1) Paladin\n (2) Alchemist" << endl;
         getline(cin, p1input);
-        if(!isdigit(p1input[0]) || p1input.length() > 1){
+        if(!isdigit(p1input[0]) || p1input.length() > 1 || (p1input!= "1" && p1input!= "2")){
                 cout << "That is not a valid choice!" << endl;
         }
-        }while(!isdigit(p1input[0]) || p1input.length() > 1);
+        }while(!isdigit(p1input[0]) || p1input.length() > 1 || (p1input!= "1" && p1input!= "2"));
         do {
         cout << P2 << ", please select a power:\n (1) Paladin\n (2) Alchemist" << endl;
         getline(cin, p2input);
-        if(!isdigit(p2input[0]) || p2input.length() > 1){
+        if(!isdigit(p2input[0]) || p2input.length() > 1 || (p2input!="1" && p2input!="2")){
                 cout << "That is not a valid choice!" << endl;
         }
-        }while(!isdigit(p2input[0]) || p2input.length() > 1);
+        }while(!isdigit(p2input[0]) || p2input.length() > 1 || (p2input!="1" && p2input!="2"));
         P1power = stoi(p1input);
         P2power = stoi(p2input);
+
 
         printGrid(Positions);
         do{
